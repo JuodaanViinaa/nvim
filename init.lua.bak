@@ -112,42 +112,27 @@ require('lazy').setup({
     },
   },
 
--- Vimtex plugin
+  -- vimtex
   { "lervag/vimtex",
-      lazy=false,
-      ft='tex',
-      tex_flavor='latex',
-      vimtex_view_method='zathura',
-      vimtex_quickfix_mode=1
+    config = function()
+      vim.g.vimtex_view_general_viewer = 'zathura'
+      vim.g.vimtex_view_general_options = [[--unique file:@pdf\#src:@line@tex]]
+      vim.g.vimtex_quickfix_enabled = 1
+      vim.g.vimtex_syntax_enabled = 1
+      vim.g.vimtex_quickfix_mode = 0
+    end,
+    ft = 'tex'
   },
 
---Ultisnips
+  -- Tex tex_conceal
+  {'KeitaNakamura/tex-conceal.vim',
+    config = function()
+    end,
+  },
+
+  -- Ultisnips
   'sirver/ultisnips',
 
--- Tex Conceal
-  'KeitaNakamura/tex-conceal.vim',
-
---nui.vim
-  'MunifTanjim/nui.nvim',
-
---nvim-notify
-  "rcarriga/nvim-notify",
---noice.nvim
-  {"folke/noice.nvim",
-    config = function()
-      require("noice").setup({
-        -- add any options here
-      })
-    end,
-    requires = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    }
-  },
 
   { -- Theme inspired by Atom
     'navarasu/onedark.nvim',
@@ -229,23 +214,6 @@ require('lazy').setup({
 
 -- Set highlight on search
 vim.o.hlsearch = true
--- Esc to un-highlight search
-vim.api.nvim_command('nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>')
--- Ultisnips
-vim.g.UltiSnipsExpandTrigger='<tab>'
-vim.g.UltiSnipsListSnippets='<c-tab>'
-vim.g.UltiSnipsJumpForwardTrigger='<c-j>'
-vim.g.UltiSnipsJumpBackwardTrigger='<c-k>'
-vim.g.UltiSnipsEditSplit='vertical'
-
--- vim.api.nvim_command('let g:UltiSnipsEditSplit="vertical"')
--- Tex Conceal
-vim.api.nvim_command('set conceallevel=2')
-vim.api.nvim_command('let g:tex_conceal="abdmg"')
-vim.api.nvim_command('hi Conceal ctermbg=NONE')
-vim.api.nvim_command('hi Conceal ctermfg=NONE')
--- Line break
-vim.api.nvim_command('set linebreak')
 
 -- Make line numbers default
 vim.wo.number = true
@@ -262,7 +230,7 @@ vim.o.clipboard = 'unnamedplus'
 vim.o.breakindent = true
 
 -- Save undo history
--- vim.o.undofile = true
+vim.o.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
