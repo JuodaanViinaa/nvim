@@ -231,6 +231,15 @@ require('lazy').setup({
 vim.o.hlsearch = true
 -- Esc to un-highlight search
 vim.api.nvim_command('nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>')
+-- Check spelling
+vim.opt.spell = true
+vim.opt.spelllang = {"es", "en"}
+-- Remap to break lines at point.
+vim.api.nvim_command('nnoremap <silent> ; /\\.\\s<CR>2s.<CR><Esc><Esc><Esc>')
+-- Control+l and control+a to correct spelling and add words to dictionary
+vim.api.nvim_command('inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u')
+vim.api.nvim_command('inoremap <C-a> <c-g>u<Esc>[szg`]a<c-g>u')
+
 -- Ultisnips
 vim.g.UltiSnipsExpandTrigger='<tab>'
 vim.g.UltiSnipsListSnippets='<c-tab>'
