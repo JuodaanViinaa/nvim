@@ -231,7 +231,7 @@ vim.o.hlsearch = true
 -- Esc to un-highlight search
 vim.api.nvim_command('nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>')
 -- Check spelling
-vim.opt.spell = true
+-- vim.opt.spell = true
 vim.opt.spelllang = {"es", "en"}
 -- Remap to break lines at point.
 vim.api.nvim_command('nnoremap <silent> ; /\\.\\s<CR>2s.<CR><Esc><Esc><Esc>')
@@ -549,6 +549,10 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+vim.api.nvim_create_autocmd(
+  "FileType",
+  { pattern = { "tex", "latex", "md", "markdown", "txt" }, command = [[setlocal spell]] }
+)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
