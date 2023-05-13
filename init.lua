@@ -121,18 +121,37 @@ require('lazy').setup({
       vimtex_quickfix_mode=1
   },
 
---Ultisnips
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
+
+  {
+  'windwp/nvim-autopairs',
+    config = function()
+      require "nvim-autopairs".setup({
+      })
+    end
+  },
+
+  --Ultisnips
   'sirver/ultisnips',
 
--- Tex Conceal
+  -- Tex Conceal
   'KeitaNakamura/tex-conceal.vim',
 
---nui.vim
+  --nui.vim
   'MunifTanjim/nui.nvim',
 
---nvim-notify
+  --nvim-notify
   "rcarriga/nvim-notify",
---noice.nvim
+  --noice.nvim
   {"folke/noice.nvim",
     config = function()
       require("noice").setup({
@@ -153,7 +172,7 @@ require('lazy').setup({
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
-       vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'onedark'
     end,
   },
   { -- Set lualine as statusline
@@ -551,7 +570,7 @@ cmp.setup {
 }
 vim.api.nvim_create_autocmd(
   "FileType",
-  { pattern = { "tex", "latex", "md", "markdown", "txt" }, command = [[setlocal spell]] }
+  { pattern = { "tex", "latex", "md", "markdown", "txt", "text" }, command = [[setlocal spell]] }
 )
 
 -- The line beneath this is called `modeline`. See `:help modeline`
