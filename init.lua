@@ -568,9 +568,15 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+-- Set spell checking only for some filetypes
 vim.api.nvim_create_autocmd(
   "FileType",
   { pattern = { "tex", "latex", "md", "markdown", "txt", "text" }, command = [[setlocal spell]] }
+)
+-- Set tabstop for python and maybe other languages
+vim.api.nvim_create_autocmd(
+  "FileType",
+  { pattern = { "python", "py" }, command = [[setlocal shiftwidth=4]] }
 )
 
 -- The line beneath this is called `modeline`. See `:help modeline`
