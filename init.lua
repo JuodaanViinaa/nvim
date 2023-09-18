@@ -315,6 +315,9 @@ vim.o.termguicolors = true
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
+-- Keymap for dismissing notifications
+ vim.keymap.set('n', '<Space>q', function() require("notify").dismiss({ silent = true }) end)
+
 -- Remap for dealing with word wrap
 -- vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 -- vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -578,6 +581,14 @@ vim.api.nvim_create_autocmd(
   "FileType",
   { pattern = { "python", "py" }, command = [[setlocal shiftwidth=4]] }
 )
+-- Clear notifications when entering insert
+vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+                group = vim.api.nvim_create_augroup("NotifyClearGrp", {}),
+                pattern = "*",
+                callback = function()
+                    require("notify").dismiss({ silent = true })
+                end
+            })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
