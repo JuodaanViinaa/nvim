@@ -579,7 +579,7 @@ vim.api.nvim_create_autocmd(
 -- Set tabstop for python and maybe other languages
 vim.api.nvim_create_autocmd(
   "FileType",
-  { pattern = { "python", "py" }, command = [[setlocal shiftwidth=4]] }
+  { pattern = { "python", "py", "text", "txt", "latex", "tex" }, command = [[setlocal shiftwidth=4]] }
 )
 -- Clear notifications when entering insert
 vim.api.nvim_create_autocmd({ "InsertEnter" }, {
