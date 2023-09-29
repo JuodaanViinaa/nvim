@@ -118,7 +118,8 @@ require('lazy').setup({
       ft='tex',
       tex_flavor='latex',
       vimtex_view_method='zathura',
-      vimtex_quickfix_mode=1
+      vimtex_quickfix_mode=1,
+      -- vimtex_compiler_method='lualatex',
   },
 
   {
