@@ -260,10 +260,17 @@ snippet \figure "Figura" bA
 \\begin{figure}[!ht]
 	\\begin{center}
 		\\includegraphics[scale=${1:0.5}]{${2:path_to_image}}
-		\\caption{$3}
 	\\end{center}
+	\\captionsetup{width=$3\linewidth}
+	\\caption{$4}
+	\\label{$5}
 \\end{figure}
 $0
+endsnippet
+
+
+snippet \ref "\ref{}" iA
+\\ref{$1}$0
 endsnippet
 
 
@@ -433,6 +440,10 @@ endsnippet
 
 snippet \see "\cite{see }" iA
 (see \\cite\{$1\})$0
+endsnippet
+
+snippet \cf "\cite{c.f. }" iA
+(\{\\itshape c.f. \} \\cite\{$1\})$0
 endsnippet
 
 snippet \todo "% TODO " bA
