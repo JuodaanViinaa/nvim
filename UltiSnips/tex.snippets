@@ -31,11 +31,6 @@ snippet itemize "begin{itemize} / end{itemize}" bA
 endsnippet
 
 
-snippet item "\item" bA
-\item $0
-endsnippet
-
-
 context math()
 snippet \frac "Line Fraction" iA
 \\frac\{$1\}\{$2\}$0
@@ -452,4 +447,8 @@ endsnippet
 
 snippet vscript "\scriptsize{}" i
 \\scriptsize\{${VISUAL}\}$0
+endsnippet
+
+snippet multicol "\multicolumn{}{}{}"
+\\multicolumn{${1:cols}}{${2:format}}{${VISUAL}}$0
 endsnippet
